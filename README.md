@@ -8,3 +8,5 @@ React components
 -Sidebar (resopnsive)
 
 -Toast component
+
+-Stopwatch
