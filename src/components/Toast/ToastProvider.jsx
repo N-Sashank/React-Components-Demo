@@ -4,8 +4,9 @@ import { useState } from 'react'
 import { X } from 'react-feather'
 
 export const ToastProvider = ({ children }) => {
+
     const [toasts, settoasts] = useState([])
-    const open = (component, timeout = 5000) => {
+    const open = (component) => {
 
         // console.log(component)
         const id = Date.now()
@@ -13,7 +14,7 @@ export const ToastProvider = ({ children }) => {
         // console.log(toasts)
         setTimeout(() => {
             close(id)
-        }, timeout);
+        }, 5000);
 
     }
     const close = (id) => {
@@ -22,7 +23,7 @@ export const ToastProvider = ({ children }) => {
     return (
         <ToastContext.Provider value={{ open, close }}>
             {children}
-            <div className='bottom-4 right-3 absolute space-y-2 rounded shadow-lg'>
+            <div className='bottom-4 right-3 fixed space-y-2 rounded shadow-lg'>
                 {toasts.map((toast) => (
                     <div key={toast.id} className="relative rounded-xl shadow bg-slate-200 p-8">
                         <button

@@ -20,12 +20,12 @@ function App() {
     <>
       <div className="overflow-hidden">
 
-        {/* <Toast1 /> */}
+        <Toast1 />
 
-        {/* <Dialog1Layout /> */}
+        <Dialog1Layout />
 
 
-        {/* <div className='bg-gray-200'>
+        <div className='bg-gray-200'>
 
           <Sidebar1 expanded={expanded} setExpanded={setExpanded} >
             <SidebarItem activeitem={activeitem} handleclick={handleclick} id={1} icon={<Home size={24} />} label="Home Dashboard" expanded={expanded}  ></SidebarItem>
@@ -34,12 +34,12 @@ function App() {
             <SidebarItem activeitem={activeitem} handleclick={handleclick} id={4} icon={<Home size={24} />} label="Home Dashboard" expanded={expanded} ></SidebarItem>
 
           </Sidebar1>
-        </div> */}
+        </div>
 
 
         <Stopwatch />
 
-        {/* <OtpField inputs={6} /> */}
+        <OtpField inputs={6} />
 
 
       </div>

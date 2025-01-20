@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useToast } from "../Toast/ToastService";
+import { useToast } from '../Toast/ToastService'
+
 import { AlertCircle, Loader } from "react-feather";
 
 const OtpField = ({ inputs }) => {
@@ -34,6 +35,7 @@ const OtpField = ({ inputs }) => {
     e.preventDefault()
     const result = otp.join("") // convert otp array to string
     if (result.length < inputs) {
+
       toast.open(
         <div className="flex items-center justify-center gap-4 ">
           <AlertCircle className=" text-red-700" size={40} />
@@ -53,6 +55,7 @@ const OtpField = ({ inputs }) => {
     else {
 
       //form submit logic
+
       toast.open(
         <div className="flex items-center justify-center gap-4 ">
           <Loader className=" text-green-700" size={40} />
@@ -65,7 +68,7 @@ const OtpField = ({ inputs }) => {
           </div>
         </div>
       )
-
+      return
     }
   }
 
@@ -125,7 +128,7 @@ const OtpField = ({ inputs }) => {
               );
             })}
           </div>
-          <button onClick={handlesubmit} className=" w-36 h-10 my-5
+          <button onClick={(e) => { handlesubmit(e) }} className=" w-36 h-10 my-5
          text-white bg-blue-700 hover:bg-blue-800  font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2   ">Sumbit</button>
 
         </form>
