@@ -1,8 +1,7 @@
-import React, { useContext } from "react";
+import React from "react";
 import { LogOut, Sidebar } from "react-feather";
-import { useState } from "react";
+import { useEffect } from "react";
 const Sidebar1 = ({ expanded, setExpanded, children }) => {
-
 
     return (
         <div className="transition-all duration-500">
@@ -57,21 +56,36 @@ const Sidebar1 = ({ expanded, setExpanded, children }) => {
     );
 };
 
-export function SidebarItem({ icon, label, active, message, expanded }) {
-    return (
-        <li
-            className={`${expanded ? `w-auto transition-all relative flex mx-3 items-center bg-blue-100 gap-4 h-7 rounded-xl ease-in-out overflow-hidden duration-500 ${active ? "bg-indigo-300" : ""
-                } p-6` : " flex items-center justify-center  p-3 rounded bg-gray-100 m-1  "}    `}
-        >
+export function SidebarItem({ id, icon, label, message, expanded, activeitem, handleclick }) {
 
-            {icon}
-            <span className={`${expanded ? "w-auto transition-all ease-in-out overflow-hidden duration-500" : " hidden w-0 transition-all ease-in-out overflow-hidden duration-500 "}`}>{label}</span>
-            {message ? (
-                <div className={`${expanded ? "w-auto transition-all ease-in-out overflow-hidden duration-500" : " w-0 transition-all ease-in-out overflow-hidden duration-500 "} absolute right-3 h-2 rounded-full bg-blue-600 w-2`}></div>
-            ) : (
-                <div></div>
-            )}
-        </li>
+    useEffect(() => {
+        const activeitem = localStorage.getItem("sideBarItem")
+        if (activeitem) {
+            handleclick(Number(activeitem))
+        }
+
+
+    }, [])
+
+    return (
+        <div onClick={() => handleclick(id)}>
+
+
+            <li
+                className={`${expanded ? `w-auto transition-all relative flex mx-3 items-center bg-blue-100 gap-4 h-7 rounded-xl ease-in-out overflow-hidden duration-500 ${activeitem === id ? "bg-indigo-400" : ""
+                    } p-6` : ` flex items-center justify-center  p-3 rounded bg-gray-100 m-1  ${activeitem === id ? "bg-indigo-400" : ""
+                    }`}    `}
+            >
+
+                {icon}
+                <span className={`${expanded ? "w-auto transition-all ease-in-out overflow-hidden duration-500" : " hidden w-0 transition-all ease-in-out overflow-hidden duration-500 "}`}>{label}</span>
+                {message ? (
+                    <div className={`${expanded ? "w-auto transition-all ease-in-out overflow-hidden duration-500" : " w-0 transition-all ease-in-out overflow-hidden duration-500 "} absolute right-3 h-2 rounded-full bg-blue-600 w-2`}></div>
+                ) : (
+                    <div></div>
+                )}
+            </li>
+        </div>
     );
 }
 export default Sidebar1;

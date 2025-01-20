@@ -5,9 +5,15 @@ import Toast1 from './components/Toast/Toast1'
 import { Home, Loader, Sidebar } from 'react-feather'
 import Sidebar1, { SidebarItem } from './components/Sidebar/Sidebar1'
 import OtpField from './components/Otp-field/Otp'
+import Stopwatch from './components/Stopwatch/Stopwatch'
 
 function App() {
   const [expanded, setExpanded] = useState(true);
+  const [activeitem, setactiveitem] = useState(Number || null)
+  const handleclick = (id) => {
+    setactiveitem(id)
+    localStorage.setItem("sideBarItem", String(id))
+  }
 
   return (
 
@@ -22,18 +28,18 @@ function App() {
         {/* <div className='bg-gray-200'>
 
           <Sidebar1 expanded={expanded} setExpanded={setExpanded} >
-            <SidebarItem icon={<Home size={24} />} label="Home Dashboard" expanded={expanded}  ></SidebarItem>
-            <SidebarItem icon={<Home size={24} />} label="Home Dashboard" expanded={expanded} active message ></SidebarItem>
-            <SidebarItem icon={<Home size={24} />} label="Home Dashboard" expanded={expanded} ></SidebarItem>
-            <SidebarItem icon={<Home size={24} />} label="Home Dashboard" expanded={expanded} ></SidebarItem>
+            <SidebarItem activeitem={activeitem} handleclick={handleclick} id={1} icon={<Home size={24} />} label="Home Dashboard" expanded={expanded}  ></SidebarItem>
+            <SidebarItem activeitem={activeitem} handleclick={handleclick} id={2} icon={<Home size={24} />} label="Home Dashboard" expanded={expanded}  ></SidebarItem>
+            <SidebarItem activeitem={activeitem} handleclick={handleclick} id={3} icon={<Home size={24} />} label="Home Dashboard" expanded={expanded} ></SidebarItem>
+            <SidebarItem activeitem={activeitem} handleclick={handleclick} id={4} icon={<Home size={24} />} label="Home Dashboard" expanded={expanded} ></SidebarItem>
 
           </Sidebar1>
         </div> */}
 
 
+        <Stopwatch />
 
-
-        <OtpField inputs={6} />
+        {/* <OtpField inputs={6} /> */}
 
 
       </div>
